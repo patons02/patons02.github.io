@@ -1,1 +1,22 @@
 remote_theme: pmarsceill/just-the-docs
+title: Stuart Paton's Home
+url: "https://patons02.github.io"
+
+# Enable or disable the site search
+search_enabled: true
+
+# Set the search token separator for hyphenated-word search:
+search_tokenizer_separator: /[\s/]+/
+
+# Enable or disable heading anchors
+heading_anchors: true
+
+# Footer content appears at the bottom of every page's main content
+footer_content: "Copyright &copy; 2020 Stuart Paton."
+
+# Color scheme currently only supports "dark" or nil (default)
+color_scheme: dark
+
+permalink: pretty
+
+exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
