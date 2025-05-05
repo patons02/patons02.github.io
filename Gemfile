@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-gem 'jekyll', '~> 4.3.3'
 gem 'bundler', '~> 2.5.15'
 gem 'faraday-retry'
 gem 'backports', '~> 3.25.0'
@@ -11,7 +10,7 @@ gem 'base64'
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
-# gem "github-pages", group: :jekyll_plugins
+gem "github-pages", group: :jekyll_plugins
 # you can read more about it here 
 # https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll
 # https://pages.github.com/versions/
@@ -25,8 +24,6 @@ group :jekyll_plugins do
     gem 'jekyll-gist', '~> 1.5.0'
     gem 'jekyll-seo-tag', '~> 2.8.0'
     gem 'jekyll-sitemap', '~> 1.4.0'
-
-    # gem 'jekyll-admin', '~> 0.11.1'
 end
 
 
@@ -40,4 +37,3 @@ end
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 gem "webrick", "~> 1.7"
-# gem "ffi", "~> 1.16.3"

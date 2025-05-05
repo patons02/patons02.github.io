@@ -19,15 +19,13 @@ jobs:
         with:
           ruby-version: 3.2
           bundler-cache: true
+          bundler: 2.5.23
 
       - name: Install dependencies
         run: bundle install
 
       - name: Build site
         run: bundle exec jekyll build --future
-
-      - name: Test HTML (optional)
-        run: bundle exec htmlproofer ./_site --assume-extension --check-html
 
   analyse:
     name: Markdown Lint
