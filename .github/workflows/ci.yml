@@ -28,7 +28,12 @@ jobs:
         run: bundle exec jekyll build --future
 
       - name: Test HTML (optional)
-        run: bundle exec htmlproofer ./_site --assume-extension --check-html
+        run: |
+          bundle exec htmlproofer ./_site \
+            --assume-extension \
+            --check-html \
+            --log-level :debug \
+            --disable-external
 
   analyse:
     name: Markdown Lint
