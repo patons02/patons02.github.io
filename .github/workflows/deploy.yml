@@ -1,41 +1,34 @@
-name: Deploy Site
+name: Deploy Jekyll Site
 
 on:
   push:
-    branches: [master]
-  workflow_dispatch:
+    branches: [main]
+
+permissions:
+  contents: write  # needed to push to gh-pages
 
 jobs:
-  set-deploy-type:
+  deploy:
     runs-on: ubuntu-latest
-    outputs:
-      target: ${{ steps.set-output.outputs.target }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: get deployment target
-        run: |
-          TARGET=$(cat DEPLOY_STRATEGY)
-          echo "TARGET=$TARGET" >> $GITHUB_ENV
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
 
-      - name: check if target is valid
-        if: success() && !contains(fromJSON('["gh-pages", "firebase", "none"]'), env.TARGET)
-        run: echo 'Invalid Deployment Target' && exit 1
+      - name: Install dependencies
+        run: bundle install
 
-      # gh actions doesn't support using the 'env' context on job level ifs for
-      # some reason smh. here we use outputs instead
-      - name: set output to deploy target
-        id: set-output
-        run: echo "::set-output name=target::${{ env.TARGET }}"
+      - name: Build site
+        run: bundle exec jekyll build --future
 
-  deploy-gh-pages:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy Jekyll Site
-        uses: sujaykundu777/jekyll-deploy-action@1.0.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
-          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
