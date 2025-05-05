@@ -31,7 +31,11 @@ jobs:
         run: |
           docker run \
           -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-          jvconseil/jekyll-docker:4.3.3 /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+          jvconseil/jekyll-docker:4.3.3 /bin/bash -c "\
+          chmod -R 777 /srv/jekyll && \
+          gem install bundler:2.5.23 && \
+          bundle _2.5.23_ install && \
+          jekyll build --future"
 
       # - name: Build the site in the jekyll/builder container
       #   run: |
