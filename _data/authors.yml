@@ -1,0 +1,13 @@
+# Add Authors here
+stuartpaton:
+    name: Stuart Paton
+    username: patons02
+    site: https://www.stuartpaton.dev
+    bio: Software Engineer. Engineering Manager. Privacy Enthusiast.
+    email: stu@stuartpaton.dev
+    avatar: stuartpaton.png
+    social:
+      - title: "github"
+        url: "https://github.com/patons02"
+      - title: "linkedin"
+        url: "https://www.linkedin.com/in/stuartjohnpaton"
