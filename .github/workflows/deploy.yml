@@ -2,7 +2,7 @@ name: Deploy Jekyll Site
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: write  # needed to push to gh-pages
