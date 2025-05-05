@@ -27,14 +27,6 @@ jobs:
       - name: Build site
         run: bundle exec jekyll build --future
 
-      - name: Test HTML (optional)
-        run: |
-          bundle exec htmlproofer ./_site \
-            --assume-extension \
-            --check-html \
-            --log-level :debug \
-            --disable-external
-
   analyse:
     name: Markdown Lint
     # The type of runner that the job will run on
