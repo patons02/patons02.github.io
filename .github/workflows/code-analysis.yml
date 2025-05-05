@@ -31,7 +31,7 @@ jobs:
         run: |
           docker run \
           -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-          jekyll/jekyll:4.3.2 /bin/bash -c "\
+          jvconseil/jekyll-docker:4.3.2 /bin/bash -c "\
           chmod -R 777 /srv/jekyll && \
           gem install bundler:2.5.23 && \
           bundle _2.5.23_ install && \
