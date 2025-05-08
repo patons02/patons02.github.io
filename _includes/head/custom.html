@@ -1,13 +1,4 @@
-<!-- _includes/head/custom.html -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const skin = localStorage.getItem("skin") || "default";
-    document
-      .getElementById("skin-style")
-      .setAttribute("href", `/assets/css/${skin}.css`);
-    document.body.classList.add(`skin-${skin}`);
-  });
-</script>
+<!-- load one default, then swap at runtime -->
 <link
   id="skin-style"
   rel="stylesheet"
@@ -17,7 +8,7 @@
     const skin = localStorage.getItem("skin") || "default";
     document
       .getElementById("skin-style")
-      .setAttribute("href", `/assets/css/${skin}.css`);
+      .setAttribute("href", `{{ '/assets/css/' | relative_url }}${skin}.css`);
     document.body.classList.add(`skin-${skin}`);
   });
 </script>
