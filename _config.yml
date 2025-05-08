@@ -256,6 +256,9 @@ collections:
   projects:
     output: true
     permalink: /:collection/:path/
+  themes:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
