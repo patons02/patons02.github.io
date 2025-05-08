@@ -2,20 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const linkEl = document.getElementById("skin-style");
   if (!linkEl) return;
 
+  // core apply logic
   function applySkin(name) {
-    // remove any previous skin-XXX class
-    document.body.className = document.body.className
-      .split(" ")
-      .filter(c => !c.startsWith("skin-"))
-      .join(" ");
+    document.body.classList.remove(...[...document.body.classList]
+      .filter(c => c.startsWith("skin-")));
     document.body.classList.add(`skin-${name}`);
     linkEl.href = linkEl.href.replace(/\/[^\/]+\.css$/, `/${name}.css`);
-    // if you have an icon in your header, swap it here:
+    // update header icon if present
     const icon = document.getElementById("theme-icon");
     if (icon) icon.textContent = name === "dark" ? "🌙" : "🌞";
   }
 
-  // initial apply
+  // load saved or default
   const saved = localStorage.getItem("skin") || "default";
   applySkin(saved);
 
@@ -30,15 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // all "Activate" buttons on your themes page
-  document.querySelectorAll("[data-skin]").forEach(btn => {
-    btn.addEventListener("click", e => {
-      e.preventDefault();
-      const skin = btn.getAttribute("data-skin");
-      localStorage.setItem("skin", skin);
-      applySkin(skin);
-      // optional: go home after applying
-      // window.location.href = "{{ '/' | relative_url }}";
-    });
+  // hijack grid item title links
+  document.querySelectorAll(".collection-grid__item a").forEach(link => {
+    // match URLs like "/themes/default/" or "/themes/dark/"
+    const m = link.getAttribute("href").match(/^\/?themes\/([^\/]+)\/?$/);
+    if (m) {
+      link.style.cursor = "pointer";  // show it’s clickable
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const skin = m[1];
+        localStorage.setItem("skin", skin);
+        applySkin(skin);
+      });
+    }
   });
 });
