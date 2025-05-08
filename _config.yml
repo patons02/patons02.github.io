@@ -106,7 +106,7 @@ footer:
     - label: GitHub
       icon: fab fa-fw fa-github
       url: https://github.com/patons02
-    - label: "🎨 Select Theme"
+    - label: "Theme Picker"
       icon: "fas fa-fw fa-paint-brush"
       url: "/themes/"
 
