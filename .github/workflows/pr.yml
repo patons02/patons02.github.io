@@ -3,7 +3,7 @@ name: PR build / Deploy to Cloudflare Pages preview (patons02-github-io-staging.
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 permissions:
   contents: read
