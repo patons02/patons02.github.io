@@ -3,4 +3,8 @@ title: Air
 header:
   teaser: /assets/images/theme-default.png
 ---
-[Activate Default](#){: .btn .btn--primary onclick="setTheme('air'); return false;" }
+<button
+  class="btn btn--primary"
+  data-skin="default">
+  Activate Default
+</button>
