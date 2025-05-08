@@ -258,8 +258,6 @@ collections:
     permalink: /:collection/:path/
   themes:
     output: true
-    permalink: /:collection/:path/
-
 # Defaults
 defaults:
   # _posts
