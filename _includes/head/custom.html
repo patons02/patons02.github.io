@@ -1,0 +1,10 @@
+<!-- _includes/head/custom.html -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const skin = localStorage.getItem("skin") || "default";
+    document
+      .getElementById("skin-style")
+      .setAttribute("href", `/assets/css/${skin}.css`);
+    document.body.classList.add(`skin-${skin}`);
+  });
+</script>
