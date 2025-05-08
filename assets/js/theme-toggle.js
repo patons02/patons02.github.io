@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hdrBtn) {
     hdrBtn.addEventListener("click", e => {
       e.preventDefault();
-      const next = document.body.classList.contains("skin-dark") ? "default" : "dark";
+      const next = document.body.classList.contains("skin-dark") ? "air" : "dark";
       localStorage.setItem("skin", next);
       applySkin(next);
     });
