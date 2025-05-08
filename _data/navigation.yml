@@ -4,3 +4,7 @@ main:
     url: /about
   - title: Projects
     url: /projects
+  - title: "Toggle Theme"
+    url: "#theme-toggle"
+    icon: "fas fa-adjust"
+    description: "Toggle light∕dark theme"
