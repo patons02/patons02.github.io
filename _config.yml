@@ -106,6 +106,9 @@ footer:
     - label: GitHub
       icon: fab fa-fw fa-github
       url: https://github.com/patons02
+    - label: "Theme Picker"
+      icon: "fas fa-fw fa-paint-brush"
+      url: "/themes/"
 
 
 # Reading Files
@@ -256,6 +259,9 @@ collections:
   projects:
     output: true
     permalink: /:collection/:path/
+  themes:
+    output: true
+    permalink: /themes/:path/
 
 # Defaults
 defaults:
