@@ -43,18 +43,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.applySkin = applySkin;
 
-  document.body.addEventListener("click", e => {
-    // look up from the clicked element to an <a href="/themes/...">
-    const link = e.target.closest('a[href^="/themes/"]');
-    if (!link) return;    // not a theme-picker link
-    e.preventDefault();    // stop the real navigation
+ document.body.addEventListener("click", e => {
+   const link = e.target.closest('a[href^="/themes/"]');
+   if (!link) return;
 
-    // pull the skin name out of the URL
-    const skin = link.getAttribute("href").match(/\/themes\/([^\/]+)\//)[1];
+   // only hijack if there’s actually a skin name in the URL
+   const href = link.getAttribute("href");
+   const m    = href.match(/^\/themes\/([^\/]+)\/$/);
+   if (!m) {
+     // let /themes/ fall back to normal navigation
+     return;
+   }
 
-    localStorage.setItem("skin", skin);
-    applySkin(skin);
-  });
+   e.preventDefault();    // stop the real navigation
+
+   const skin = m[1];
+
+   localStorage.setItem("skin", skin);
+   applySkin(skin);
+ });
 
   // load saved or default
   let saved = localStorage.getItem("skin");
