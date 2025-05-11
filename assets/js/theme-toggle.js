@@ -1,33 +1,49 @@
 // assets/js/theme-toggle.js
+
 document.addEventListener("DOMContentLoaded", () => {
   const toggleLink = document.querySelector('a[title="toggle-theme"]');
-  if (!toggleLink) return;
+  if (!toggleLink || typeof window.applySkin !== "function") return;
 
+  // 1) Inject three spans: sun icon, knob, moon icon
+  toggleLink.innerHTML = `
+    <span class="slider-icon slider-icon--sun">☀︎</span>
+    <span class="slider-knob"></span>
+    <span class="slider-icon slider-icon--moon">🌙</span>
+  `;
+
+  // 2) Helper to sync the .is-dark class on the link
+  const syncClass = () => {
+    const current = getCurrentSkin();
+    if (darkThemes.includes(current)) {
+      toggleLink.classList.add("is-dark");
+    } else {
+      toggleLink.classList.remove("is-dark");
+    }
+  };
+
+  // 3) Wrap applySkin so that any skin change re-syncs our slider
+  const originalApply = window.applySkin;
+  window.applySkin = name => {
+    originalApply(name);
+    syncClass();
+  };
+
+  // 4) Initial sync
+  syncClass();
+
+  // 5) Click handler: flip light ↔ dark
   toggleLink.addEventListener("click", e => {
     e.preventDefault();
+    const current = getCurrentSkin();
+    const next = darkThemes.includes(current)
+      ? (localStorage.getItem("last-light") || lightThemes[0])
+      : (localStorage.getItem("last-dark")  || darkThemes[0]);
 
-    // find current skin name from body classList
-    const currentClass = [...document.body.classList]
-      .find(c => c.startsWith("skin-"));
-    const current = currentClass
-      ? currentClass.replace("skin-", "")
-      : null;
-
-    let next;
-    if (darkThemes.includes(current)) {
-      // if you’re on any dark skin → switch to your preferred light skin
-      next = localStorage.getItem("last-light")|| lightThemes[0];
-    } else {
-      // if you’re on any light skin (or unknown) → switch to your preferred dark skin
-      next = localStorage.getItem("last-dark")  || darkThemes[0];
-    }
-
-    // remember this choice for next toggle
+    // remember
     if (lightThemes.includes(next)) localStorage.setItem("last-light", next);
     if (darkThemes.includes(next))  localStorage.setItem("last-dark",  next);
     localStorage.setItem("skin", next);
 
-    // applySkin must be globally available (from theme-picker.js)
-    window.applySkin(next);
+    window.applySkin(next);  // this also re-runs syncClass()
   });
 });
