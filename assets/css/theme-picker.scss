@@ -1,0 +1,43 @@
+---
+permalink: /assets/css/theme-picker.css
+---
+
+/* ----------------------------------------------------------------------------
+   Theme Picker — styles for /themes/
+   ---------------------------------------------------------------------------- */
+
+.archive {
+  /* grid of theme cards */
+  .entries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto‐fit, minmax(180px, 1fr));
+    grid-gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  /* each card in the grid */
+  .grid_item {
+    .archive_item {
+      text-align: center;
+      padding: 1rem 0;
+
+      /* hide the excerpt if you don’t need it */
+      .archive_item-excerpt {
+        display: none;
+      }
+
+      /* the theme title link */
+      .archive_item-title {
+        margin-bottom: 0.5rem;
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          font-weight: 600;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

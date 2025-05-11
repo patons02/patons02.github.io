@@ -260,8 +260,16 @@ collections:
     output: true
     permalink: /:collection/:path/
   themes:
-    output: true
+    output: false
     permalink: /themes/:path/
+
+# _config.yml
+stylesheets:
+  - /assets/css/theme-picker.css
+head_scripts:
+  - /assets/js/constants.js
+  - /assets/js/theme-picker.js
+  - /assets/js/theme-toggle.js
 
 # Defaults
 defaults:

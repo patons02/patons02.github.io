@@ -6,6 +6,5 @@ main:
     url: /projects
   - title: "Toggle Theme"
     url: "#"
-    id: theme-toggle
     icon: "fas fa-adjust"
-    description: "Toggle light∕dark theme"
+    description: "toggle-theme"
