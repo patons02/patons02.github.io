@@ -1,0 +1,8 @@
+---
+---
+@import "minimal-mistakes/skins/dark";  // skin variables & overrides
+@import "minimal-mistakes";                // rest of the theme
+
+:root {
+  --current-skin: default;
+}

@@ -1,0 +1,10 @@
+# main links
+main:
+  - title: About Me
+    url: /about
+  - title: Projects
+    url: /projects
+  - title: "Toggle Theme"
+    url: "#"
+    icon: "fas fa-adjust"
+    description: "toggle-theme"

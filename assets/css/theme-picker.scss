@@ -1,0 +1,197 @@
+---
+---
+/* ----------------------------------------------------------------------------
+   Sun–Moon Slider for header “Toggle Theme”
+   ---------------------------------------------------------------------------- */
+
+a[title="toggle-theme"] {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* track background */
+a[title="toggle-theme"] {
+  background-color: #eee;
+  border-radius: 14px;
+  transition: background-color .2s;
+}
+
+/* the little round knob */
+.slider-knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: left .2s, background .2s, border-color .2s;
+  z-index: 2;
+}
+
+/* sun & moon icons */
+.slider-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slider-icon--sun {
+  left: 8px;
+  color: #f5a623; /* golden sun */
+}
+
+.slider-icon--moon {
+  right: 8px;
+  color: #888;    /* muted moon */
+}
+
+/* ON state = dark skin */
+a[title="toggle-theme"].is-dark {
+  background-color: #444;
+}
+
+a[title="toggle-theme"].is-dark .slider-knob {
+  left: calc(100% - 24px);    /* 60 - knob width (20) - 4px padding */
+  background: #222;
+  border-color: #666;
+}
+
+a[title="toggle-theme"].is-dark .slider-icon--sun {
+  color: #777;
+}
+
+a[title="toggle-theme"].is-dark .slider-icon--moon {
+  color: #ffd;
+}
+
+/* ----------------------------------------------------------------------------
+   Tweak for nav underline + perfect centering
+   ---------------------------------------------------------------------------- */
+
+a[title="toggle-theme"] {
+  /* kill any inherited underline/border from the nav */
+  text-decoration: none !important;
+  border-bottom: none !important;
+
+  /* switch from block to inline-flex so we can center contents */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;               // no extra padding
+  position: relative;
+  width: 60px;
+  height: 28px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #eee;
+  border-radius: 14px;
+  transition: background-color .2s;
+}
+
+a[title="toggle-theme"].is-dark {
+  background-color: #444;
+}
+
+/* knob */
+.slider-knob {
+  position: absolute;
+  /* vertically center with translateY */
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: left .2s, background .2s, border-color .2s;
+  z-index: 2;
+}
+a[title="toggle-theme"].is-dark .slider-knob {
+  left: calc(100% - 24px);
+  background: #222;
+  border-color: #666;
+}
+
+/* icons */
+.slider-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slider-icon--sun  { left: 8px;  color: #f5a623; }
+.slider-icon--moon { right: 8px; color: #888; }
+
+a[title="toggle-theme"].is-dark .slider-icon--sun  { color: #777; }
+a[title="toggle-theme"].is-dark .slider-icon--moon { color: #ffd; }
+
+/* ----------------------------------------------------------------------------
+   Make the sun pop more
+   ---------------------------------------------------------------------------- */
+
+.slider-icon--sun {
+  /* bigger icon */
+  font-size: 18px !important;
+
+  /* warmer, brighter yellow */
+  color: #ffcf33 !important;
+
+  /* subtle glow to mimic sunshine */
+  text-shadow:
+    0 0 2px rgba(255, 207, 51, 0.8),
+    0 0 4px rgba(255, 207, 51, 0.6);
+}
+
+/* in dark mode, brighten it even more */
+a[title="toggle-theme"].is-dark .slider-icon--sun {
+  color: #ffe066 !important;
+  text-shadow:
+    0 0 3px rgba(255, 224, 102, 0.9),
+    0 0 6px rgba(255, 224, 102, 0.7);
+}
+
+/* ----------------------------------------------------------------------------
+   Enlarge the knob so it fully covers the moon
+   ---------------------------------------------------------------------------- */
+
+.slider-knob {
+  /* bump up from 20×20 → 24×24 */
+  width: 24px;
+  height: 24px;
+
+  /* center vertically (50% + translateY) */
+  top: 50%;
+  left: 2px;               /* from 4px → 2px to keep symmetric padding */
+  transform: translateY(-50%);
+
+  /* rest stays the same */
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: left .2s, background .2s, border-color .2s;
+  z-index: 2;
+}
+
+a[title="toggle-theme"].is-dark .slider-knob {
+  /* slide it all the way over (60px track width - 2px padding - 24px knob) = 34px */
+  left: 34px;
+
+  background: #222;
+  border-color: #666;
+}

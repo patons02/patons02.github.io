@@ -1,0 +1,92 @@
+# --- JEKYLL / STATIC SITE ARTIFACTS ---
+
+# Build output
+_site/
+.public/          # if you use a custom output dir
+.sitemap/         # if you generate a sitemap dir
+.jekyll-cache/
+.jekyll-metadata
+
+# Sass/SCSS cache
+.sass-cache/
+
+# Bundler / Ruby artifacts
+.bundle/
+vendor/bundle/
+Gemfile.lock     # lockfile can be committed if you prefer, but ignore if you vendor it
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.pid
+tmp/
+log/
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor backups
+*~
+.#*
+*.swp
+*.swo
+
+# ENV / secrets
+.env
+.env.*.local
+
+# --- IntelliJ IDEA / JetBrains IDE ---
+
+# Project config dir
+.idea/
+
+# Module files
+*.iml
+*.iws
+
+# Workspace and task metadata
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries/
+
+# Build output
+out/
+
+# JetBrains Rider
+.idea/**/dotSettings.user
+
+# macOS filesystem .DS_Store (again, in case under .idea/)
+.idea/**/.DS_Store
+
+# --- Optional: Other common IDEs (uncomment if needed) ---
+
+# VS Code
+# .vscode/
+
+# Sublime Text
+# *.sublime-workspace
+# *.sublime-project
+
+# Atom
+# .atom/
+
+# --- Node / JS deps (if you use npm/yarn for assets) ---
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- Docker (if you use containers) ---
+
+# docker-compose override
+docker-compose.override.yml
+
+# local .env for Docker
+.env.docker
